@@ -8,8 +8,8 @@
 </script>
 
 <div class="h-full w-full bg-gray-800 flex flex-col items-center">
-  <div class="rainbow-border transition duration-200" class:rainbow-anim={showRainbow}/>
-  <div class="flex flex-col h-full w-96 sm:min-w-48">  
+  <div class="rainbow-border transition duration-200" class:rainbow-anim={showRainbow}></div>
+  <div class="flex flex-col h-full w-96 sm:min-w-48">
     <div class="flex-none w-full p-5 flex items-center justify-center">
       <div class="relative inline-block group">
         <div class="rainbow-border" class:rainbow-anim={showRainbow}></div>
