@@ -10,18 +10,32 @@
 <div class="h-full w-full bg-gray-800 flex flex-col items-center">
   <div class="rainbow-border transition duration-200" class:rainbow-anim={showRainbow}></div>
   <div class="flex flex-col h-full w-96 sm:min-w-48">
-    <div class="flex-none w-full p-5 flex items-center justify-center">
-      <div class="relative inline-block group">
-        <div class="rainbow-border" class:rainbow-anim={showRainbow}></div>
-        <div class="relative z-10 flex p-2 m-0.5 items-center justify-center text-center bg-gray-600 hover:bg-gray-600 rounded-full p-3 hover:p-4 duration-200 ease-in hover:p-2">
-          <h1 class="text-3xl font-bold text-gray-200 duration-200 ease-in">@TatsuDev</h1>
-        </div>
+    <div class="flex-none w-full p-5 flex flex-col items-center justify-center gap-4">
+      <!-- Logo -->
+      <div class="w-32 h-32 relative group">
+        <img src="/TatsuDev.svg" alt="TatsuDev Logo" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-110" />
       </div>
+      
+      <!-- Name Badge -->
     </div>
-    <div class="flex-1 text-gray-200 text-wrap text-center">
+    <div class="flex-1 text-gray-200 text-wrap text-center space-y-4">
       <p>Welcome to my little playground. </p>
       <p>We currently are under construction.</p>
       <p>I'm sorry, you've got nothing to see here just yet..</p>
+      
+      <!-- Quick Links -->
+      <div class="pt-4">
+
+      <div class="relative inline-block group">
+        <div class="rainbow-border" class:rainbow-anim={showRainbow}></div>
+        <div class="relative z-10 flex p-2 m-0.5 items-center justify-center text-center bg-gray-600 hover:bg-gray-600/50 text-gray-200 rounded-full p-3 duration-200 ease-in">
+          <a href="/resume" class="inline-block px-6 py-2">
+            View Resume
+          </a>
+        </div>
+      </div>
+      </div>
+      
       <div class="flex items-center justify-center p-5 cursor-hand">
         <a href="https://x.com/TatsuDeveloper">
           <Twitter class="text-white"/>
