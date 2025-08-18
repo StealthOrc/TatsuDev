@@ -43,7 +43,7 @@
 			introducingVcs: 'Introduction of version control systems and code review systems in the department',
 			updatingAspNet: 'Updating an old ASP.NET based web application to feature responsive JavaScript frontend and C# backend using WebMethods',
 			mfcProjectDesc: 'Development, update and maintenance of an MFC for a major logistics customer in Austria',
-			supervisorTerminalDesc: 'Development of a fast responsive data table with dynamic fetching, sorting, filtering, drag & drop and in-place editing',
+			supervisorTerminalDesc: 'Development of a Supervisor Terminal with a fast and responsive data table with dynamic fetching, sorting, filtering, drag & drop and in-place editing',
       awards: 'Awards',
 		},
 		de: {
@@ -85,7 +85,7 @@
 			introducingVcs: 'Einführung von Versionskontrollsystemen und Code-Review-Systemen in der Abteilung',
 			updatingAspNet: 'Aktualisierung einer alten ASP.NET-basierten Webanwendung mit responsivem JavaScript-Frontend und C#-Backend mit WebMethods',
 			mfcProjectDesc: 'Entwicklung, Aktualisierung und Wartung eines MFR für einen großen Logistikkunden in Österreich',
-			supervisorTerminalDesc: 'Entwicklung einer schnellen responsiven Datentabelle mit dynamischem Abrufen, Sortieren, Filtern, Drag & Drop und In-Place-Bearbeitung',
+			supervisorTerminalDesc: 'Entwicklung eines Web Leitstandes mit einer schnellen responsiven Datentabelle mit dynamischem Abrufen, Sortieren, Filtern, Drag & Drop und In-Place-Bearbeitung',
       awards: 'Auszeichnungen',
 		}
 	};
@@ -100,8 +100,15 @@
 
 <div class="min-h-screen bg-gradient-to-br from-slate-900 via-[#0a4a8a] to-slate-900">
 	<div class="container mx-auto px-4 py-8 max-w-5xl">
-		<!-- Language Switcher -->
-		<div class="flex justify-end mb-4">
+		<!-- Navigation -->
+		<div class="flex justify-between items-center mb-4">
+			<a href="/" class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-white/20 transition-colors text-white">
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+				</svg>
+				{currentLang === 'en' ? 'Back to Home' : 'Zurück zur Startseite'}
+			</a>
+			
 			<button 
 				on:click={() => currentLang = currentLang === 'en' ? 'de' : 'en'}
 				class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-white/20 transition-colors text-white"
@@ -114,7 +121,12 @@
 		<!-- Header Section -->
 		<header class="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8 border border-white/20 shadow-2xl">
 			<div class="flex flex-col md:flex-row items-center md:items-start gap-6">
-				<div class="flex-1">
+				<!-- Logo -->
+				<div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+					<img src="/TatsuDev.svg" alt="TatsuDev Logo" class="w-full h-full object-contain drop-shadow-2xl" />
+				</div>
+				
+				<div class="flex-1 text-center md:text-left">
 					<h1 class="text-4xl md:text-5xl font-bold text-white mb-2 bg-gradient-to-r from-[#459cff] to-[#5dfffc] bg-clip-text text-transparent">
 						Martin Garas
 					</h1>
@@ -235,7 +247,7 @@
 					<div class="space-y-4">
 						<div class="bg-white/5 rounded-lg p-4 border border-white/10">
 							<div class="flex justify-between items-start mb-2">
-								<h3 class="text-lg font-semibold text-white">{currentLang === 'en' ? 'ASP.NET Supervisor Terminal' : 'ASP.NET Supervisor Terminal'}</h3>
+								<h3 class="text-lg font-semibold text-white">{currentLang === 'en' ? 'Web Supervisor Terminal' : 'Web Leitstand'}</h3>
 								<span class="text-xs text-gray-400">{currentLang === 'en' ? 'May 2025 - Present' : 'Mai 2025 - Heute'}</span>
 							</div>
 							<p class="text-gray-300 text-sm mb-2">{t.supervisorTerminalDesc}</p>
@@ -349,10 +361,10 @@
 								<div>
 									<div class="flex justify-between text-sm mb-1">
 										<span class="text-gray-300">C#</span>
-										<span class="text-white">{t.advanced}</span>
+										<span class="text-white">{t.intermediate}</span>
 									</div>
 									<div class="w-full bg-white/10 rounded-full h-2">
-										<div class="bg-gradient-to-r from-[#1170dc] to-[#459cff] h-2 rounded-full" style="width: 70%"></div>
+										<div class="bg-gradient-to-r from-[#1170dc] to-[#459cff] h-2 rounded-full" style="width: 60%"></div>
 									</div>
 								</div>
 								<div>
