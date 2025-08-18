@@ -408,6 +408,7 @@
 								<span class="px-3 py-1 bg-[#1170dc]/20 text-white rounded-lg text-xs">Visual Studio</span>
 								<span class="px-3 py-1 bg-[#1170dc]/20 text-white rounded-lg text-xs">Jenkins</span>
 								<span class="px-3 py-1 bg-[#1170dc]/20 text-white rounded-lg text-xs">Vite</span>
+								<span class="px-3 py-1 bg-[#1170dc]/20 text-white rounded-lg text-xs">Claude Code</span>
 							</div>
 						</div>
 					</div>
