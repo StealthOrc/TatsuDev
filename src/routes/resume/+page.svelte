@@ -10,7 +10,6 @@
 		Briefcase,
 		GraduationCap,
 		Code,
-		Database,
 		Terminal,
 		Languages,
 		Gamepad2
@@ -224,7 +223,7 @@
 										Vanderlande Industries GmbH & Co. KG, Mönchengladbach
 									</p>
 								</div>
-								<span class="flex items-center gap-1 text-nowrap text-sm text-gray-400">
+								<span class="flex items-center gap-1 text-sm text-gray-400">
 									<Calendar class="h-3 w-3" />
 									{currentLang === 'en' ? 'Jan 2023 - Present' : 'Jan 2023 - Heute'}
 								</span>
@@ -434,7 +433,7 @@
 			<div class="space-y-8">
 				<!-- Skills Section -->
 				<section class="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
-					<h2 class="mb-6 flex items-center gap-3 text-nowrap text-2xl font-bold text-white">
+					<h2 class="mb-6 flex items-center gap-3 text-2xl font-bold text-white">
 						<Terminal class="h-6 w-6 text-[#1170dc]" />
 						Technical Skills
 					</h2>
