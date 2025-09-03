@@ -513,9 +513,7 @@
 								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">Neovim</span>
 								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">VS Code</span>
 								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">Git</span>
-								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white"
-									>Visual Studio</span
-								>
+								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">Visual Studio</span>
 								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">Jenkins</span>
 								<span class="rounded-lg bg-[#1170dc]/20 px-3 py-1 text-xs text-white">Vite</span>
 							</div>
