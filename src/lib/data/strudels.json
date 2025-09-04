@@ -1,0 +1,14 @@
+{
+  "strudels": [
+    {
+      "title": "Sketchy Lane",
+      "date": "2025-09-04",
+      "url": "https://strudel.cc/#JDE6IG4oIjIgMiAxMiwgWzEyIDEgMSAxXSIpLnMoImJkKjIgY3AsIFtoaCBoaCBoaCBoaF0iKQovLyQxOiBuKCIyIDIgNiAtLCBbMTIgMSAxIDFdIikucygiYmQgLSBiZCAtLCBbaGggLSAtIC1dIikKLl9wdW5jaGNhcmQoKQokYmFzczE6IHMoImdtX2VsZWN0cmljX2Jhc3NfZmluZ2VyLCBnbV9lbGVjdHJpY19iYXNzX2ZpbmdlciIpLm4ocmFuZC5yYW5nZSg4LDE2KSxyYW5kLnJhbmdlKDEsNCkpCiAgLmNsaXAoLjEpCiAgLmZtZGVjYXkoLjIpCiAgLnZpYihyYW5kLnJhbmdlKDAsMC4xKSkudmlibW9kKHJhbmQucmFuZ2UoNSwxMikpCiAgLy8ucm9vbSguMykKICAubHBmKCI8MTAwMCA1MDAwPiIpCiAgLl9zY29wZSgpCgovLyRzeW50aDE6IG5vdGUoImMgZWIgZyBjNCAtIC0gYyBlYiAtIGMgZWIgLSIpCiRzeW50aDI6IG5vdGUoImM0IGViNCBnNCBjNCA8ZWI0IGc0PiAtIGMgZWIgLSBjIGViIC0iKQovLyRzeW50aDM6IG5vdGUoImM0IGViNCBnNCBjNCBlYjQgZzQsIGM0IC0gLSAtIikKICAuY2xpcCgyKS5zKCJnbV9lbGVjdHJpY19ndWl0YXJfY2xlYW4iKQogIC5fcGlhbm9yb2xsKCk%3D"
+    },
+    {
+      "title": "Bored Strudel",
+      "date": "2025-09-03",
+      "url": "https://strudel.cc/#c2V0Q3BzKDE0MC82MC80KQoKJDogcygic2JkITQiKQouX3B1bmNoY2FyZCgpCiQyOiBzKCJjYiExIikKLl9wdW5jaGNhcmQoKQoKJGJhc3M6IG4oaXJhbmQoMTApLnN1YigyKS5zZWcoMTYpKS5zY2FsZSgiYzpyaXR1c2VuIikKLnNjYWxlVHJhbnNwb3NlKCI8MCAtMSAtNCAtMiAtNCAtNSAtNiAtND4iKQoucygiPHNhd3Rvb3RoIHNhd3Rvb3RoOjwzMiA2NCA1MCAxMjg%2BPiIpLmxwZihzbGlkZXIoMTMwMDAsMCwxNjAwMCwxMDApKQoucm9vbSguNykKLmNvbG9yKCJjeWFuIG1hZ2VudGEiKS5fc2NvcGUoKQoKJHN5bnRoOiBjaG9yZCgiPEZeNyBHNyBFbTcgQW03PiIpLnZvaWNpbmcoKQo%3D"
+    }
+  ]
+}
