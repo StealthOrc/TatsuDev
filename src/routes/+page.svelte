@@ -21,10 +21,8 @@
 
 		<!-- Name Badge -->
 	</div>
-	<div class="flex-1 space-y-4 text-wrap text-center">
+	<div class="flex-1 space-y-8 text-wrap text-center">
 		<p>Welcome to my little playground.</p>
-		<p>We currently are under construction.</p>
-		<p>I'm sorry, you've got nothing to see here just yet..</p>
 
 		<div class="games-list mt-6 grid gap-4 px-4 pb-3 sm:grid-cols-2">
 			<a
@@ -45,7 +43,7 @@
 			</a>
 
 			<a
-				href="https://hitit.tatsudev.net"
+				href="https://hit-it.tatsudev.net"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="game-banner group relative block aspect-video w-full overflow-hidden rounded-lg bg-black shadow-[0_0_28px_rgba(255,255,255,0.22)] ring-2 ring-white/10 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_42px_rgba(255,255,255,0.42)] hover:ring-white/70 focus:outline-none focus:ring-2 focus:ring-white"
