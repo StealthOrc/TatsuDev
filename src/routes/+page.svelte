@@ -8,7 +8,7 @@
 </script>
 
 <div class="rainbow-border transition duration-200" class:rainbow-anim={showRainbow}></div>
-<div class="flex h-full w-96 flex-col sm:min-w-48">
+<div class="flex h-full w-full max-w-3xl flex-col px-4 sm:min-w-48">
 	<div class="flex w-full flex-none flex-col items-center justify-center gap-4 p-5">
 		<!-- Logo -->
 		<div class="group relative h-32 w-32">
@@ -26,22 +26,41 @@
 		<p>We currently are under construction.</p>
 		<p>I'm sorry, you've got nothing to see here just yet..</p>
 
-		<a
-			href="https://stealthorc.itch.io/pachiiingko"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="pachinko-banner group relative mx-4 mt-6 block overflow-hidden rounded-lg bg-[#15182f] shadow-[0_0_28px_rgba(255,220,0,0.28)] ring-2 ring-white/10 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_42px_rgba(255,220,0,0.48)] hover:ring-yellow-300/70 focus:outline-none focus:ring-2 focus:ring-yellow-300"
-			aria-label="Play PACHIIINGKO"
-		>
-			<img
-				src="/pachiiingko-banner.png"
-				alt="PACHIIINGKO"
-				class="group-hover:saturate-125 aspect-video w-full object-cover transition duration-300 ease-out group-hover:scale-105"
-			/>
-			<span
-				class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
-			></span>
-		</a>
+		<div class="games-list mt-6 grid gap-4 px-4 pb-3 sm:grid-cols-2">
+			<a
+				href="https://stealthorc.itch.io/pachiiingko"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="game-banner group relative block aspect-video w-full overflow-hidden rounded-lg bg-[#15182f] shadow-[0_0_28px_rgba(255,220,0,0.28)] ring-2 ring-white/10 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_42px_rgba(255,220,0,0.48)] hover:ring-yellow-300/70 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+				aria-label="Play PACHIIINGKO"
+			>
+				<img
+					src="/pachiiingko-banner.png"
+					alt="PACHIIINGKO"
+					class="group-hover:saturate-125 h-full w-full object-cover transition duration-300 ease-out group-hover:scale-105"
+				/>
+				<span
+					class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
+				></span>
+			</a>
+
+			<a
+				href="https://hitit.tatsudev.net"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="game-banner group relative block aspect-video w-full overflow-hidden rounded-lg bg-black shadow-[0_0_28px_rgba(255,255,255,0.22)] ring-2 ring-white/10 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_42px_rgba(255,255,255,0.42)] hover:ring-white/70 focus:outline-none focus:ring-2 focus:ring-white"
+				aria-label="Play HIT-IT: Squares and Triangles"
+			>
+				<img
+					src="/hit-it-banner.png"
+					alt="HIT-IT: Squares and Triangles"
+					class="h-full w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-hover:contrast-125"
+				/>
+				<span
+					class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/15 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
+				></span>
+			</a>
+		</div>
 
 		<a href="/strudel" class="p-3 hover:text-white hover:underline"> My Strudel Collection</a>
 
@@ -115,7 +134,7 @@
 		animation: rainbow-rotate 2s ease infinite;
 	}
 
-	.pachinko-banner {
+	.game-banner {
 		animation: banner-pop 700ms ease-out both;
 	}
 
