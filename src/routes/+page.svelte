@@ -26,6 +26,23 @@
 
 		<div class="games-list mt-6 grid gap-4 px-4 pb-3 sm:grid-cols-2">
 			<a
+				href="https://tatsudev.itch.io/less-space"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="game-banner group relative block aspect-video w-full overflow-hidden rounded-lg bg-[#100b18] shadow-[0_0_28px_rgba(107,202,255,0.28)] ring-2 ring-white/10 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_42px_rgba(107,202,255,0.48)] hover:ring-cyan-300/70 focus:outline-none focus:ring-2 focus:ring-cyan-300 sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.5rem)]"
+				aria-label="Play Less Space on itch.io"
+			>
+				<img
+					src="/less-space-cover.png"
+					alt="Less Space"
+					class="h-full w-full object-cover object-[center_35%] transition duration-300 ease-out group-hover:scale-105 group-hover:saturate-125"
+				/>
+				<span
+					class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
+				></span>
+			</a>
+
+			<a
 				href="https://stealthorc.itch.io/pachiiingko"
 				target="_blank"
 				rel="noopener noreferrer"
