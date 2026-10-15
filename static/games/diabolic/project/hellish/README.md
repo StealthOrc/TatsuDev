@@ -49,6 +49,8 @@ Rebuild runtime templates for the pack format; older loose-file runtimes cannot 
 
 Generated Windows, Linux and Web distributions are under `hellish/dist/`; build outputs/templates are ignored by Git. Packaged native launchers run without Rust or the original checkout. Windows binaries have been cross-compiled, but still need execution on Windows. macOS has no validated runtime in this workspace.
 
+Before publishing Web, run `python3 hellish/tools/verify_web_bridge.py hellish/templates/web/miniquad_bridge.js` and `python3 hellish/tools/verify_web.py PATH_TO_WEB_EXPORT` from the repository root (requires Playwright and Chromium). The bridge check reads every body-part, IK and shadow matrix back from WebGL, including after WASM memory growth. The game smoke check covers rendering, controls, audio and save storage; a successful startup alone does not establish model pose parity.
+
 ## Content and architecture
 
 The tavern shop sells these carried items for 25 coins each. Effects stay active while held or stored.

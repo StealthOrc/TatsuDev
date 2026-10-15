@@ -1,7 +1,7 @@
 {
   "repository": "StealthOrc/DIABOLIC",
   "branch": "tatsu/hellish-engine",
-  "commit": "96ada871ad82d0df2c60b30669c8ac4aefadc671",
+  "commit": "bfb3124e30abfda9fd964c8889f4e57aa4e14488",
   "runtime": "Hellish Engine",
   "target": "web"
 }

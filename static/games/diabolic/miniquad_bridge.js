@@ -1583,6 +1583,11 @@ const hellishImports=Object.assign({},importObject.env);
 hellishImports.init_webgl=function(){init_webgl(2);emscripten_shaders_hack=true;};
 // Renderer calls outside miniquad must use the same WebGL context too.
 hellishImports.glDepthMask=function(enabled){gl.depthMask(!!enabled);};
+// miniquad 0.4.8's loader reads only 16 floats, dropping every matrix after
+// the first. Upload all body-part, IK and shadow transforms like native GL.
+hellishImports.glUniformMatrix4fv=function(location,count,transpose,value){
+ gl.uniformMatrix4fv(GL.uniforms[location],!!transpose,getArray(value,Float32Array,16*count));
+};
 hellishImports.glTexImage2D=function(target,level,internal,width,height,border,format,type,pixels){
  if(internal===gl.DEPTH_COMPONENT)internal=type===gl.FLOAT?gl.DEPTH_COMPONENT32F:type===gl.UNSIGNED_INT?gl.DEPTH_COMPONENT24:gl.DEPTH_COMPONENT16;
  const ArrayType=type===gl.FLOAT?Float32Array:type===gl.UNSIGNED_SHORT?Uint16Array:type===gl.UNSIGNED_INT?Uint32Array:Uint8Array;
