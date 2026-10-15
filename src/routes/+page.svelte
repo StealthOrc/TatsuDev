@@ -132,11 +132,10 @@
 				<h1 id="current-game-heading" class="section-heading">My current game in development</h1>
 				<div class="featured-game-frame">
 					<a
-						href="https://tatsudev.itch.io/diabolic"
-						target="_blank"
-						rel="noopener noreferrer"
+						href="/diabolic"
+						data-sveltekit-reload
 						class="featured-game group"
-						aria-label="Play the Diabolic demo on itch.io"
+						aria-label="Play Diabolic in your browser"
 					>
 						<img src="/diabolic-banner.png" alt="Diabolic in a dark dungeon" />
 						<span class="featured-game-shade" aria-hidden="true"></span>
@@ -339,10 +338,6 @@
 
 	.rainbow-anim {
 		animation: rainbow-rotate 2s ease infinite;
-	}
-
-	.game-banner {
-		animation: banner-pop 700ms ease-out both;
 	}
 
 	.page-content {
@@ -830,17 +825,6 @@
 		}
 		100% {
 			background-position: 0% 50%;
-		}
-	}
-
-	@keyframes banner-pop {
-		from {
-			opacity: 0;
-			transform: translateY(10px) scale(0.98);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) scale(1);
 		}
 	}
 </style>

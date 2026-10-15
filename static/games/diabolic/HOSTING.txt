@@ -1,0 +1,1 @@
+Serve this directory over HTTP/HTTPS. WebAssembly, WebGL2, browser pointer lock and WebAudio are required. Enable HTTP compression for JSON and WASM to reduce initial downloads. Saves use IndexedDB under this origin. Open index.html; file:// is unsupported. Browser rendering is paced by requestAnimationFrame, not the desktop 240 FPS target.
