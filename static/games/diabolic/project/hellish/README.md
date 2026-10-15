@@ -53,6 +53,8 @@ Before publishing Web, run `python3 hellish/tools/verify_web_bridge.py hellish/t
 
 ## Content and architecture
 
+Green ranged goliaths match the standard red melee's animated height. The enraged elk replaces every second patch along each root lane with a green ranged summon: a 0.72-second ground warning precedes its 0.9-second rise, during which it cannot move or attack. Interrupting the cast or killing the elk cancels pending summons. Normal root casts keep all spike patches. Direct weak-spot hits play a short coin-derived ding; ordinary and damage-over-time hits do not.
+
 The tavern shop sells these carried items for 25 coins each. Effects stay active while held or stored.
 
 | Item | Size | Effect |
