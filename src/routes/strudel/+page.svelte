@@ -1,18 +1,29 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import SiteShell from '$lib/SiteShell.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>
 
-<div class="flex h-full flex-col items-center justify-center gap-4">
-	<a href="/" class="hover:text-white hover:underline">Back to Home</a>
-	<hr class="w-full border-gray-200" />
-	{#each data.strudels as strudel}
-		<strudel class="w-full hover:text-white hover:underline">
-			<a href={strudel.url} target="_blank" class="text-lg"
-				>{strudel.title}
-				<p class="text-sm">{strudel.date}</p>
-			</a>
-		</strudel>
-	{/each}
-</div>
+<svelte:head>
+	<title>Strudel Collection — TatsuDev</title>
+</svelte:head>
+
+<SiteShell>
+	<h1 class="text-3xl font-bold text-white">My Strudel Collection</h1>
+	<ul class="flex w-full flex-col items-center gap-4">
+		{#each data.strudels as strudel}
+			<li class="w-full">
+				<a
+					href={strudel.url}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-block text-lg hover:text-white hover:underline"
+				>
+					{strudel.title}
+					<span class="block text-sm">{strudel.date}</span>
+				</a>
+			</li>
+		{/each}
+	</ul>
+</SiteShell>

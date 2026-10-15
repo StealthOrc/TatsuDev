@@ -2,13 +2,16 @@
 	import { onMount } from 'svelte';
 	import { flip } from 'svelte/animate';
 	import { cubicOut } from 'svelte/easing';
-	import { ChevronRight, Lightbulb, LightbulbOff } from 'lucide-svelte';
-	let showRainbow = $state(true);
-	function toggleRainbow() {
-		showRainbow = !showRainbow;
-	}
-	let isBtnHovered = $state(false);
+	import { ChevronRight } from 'lucide-svelte';
+	import SiteShell from '$lib/SiteShell.svelte';
 	const otherGames = [
+		{
+			title: 'Rail Survivors',
+			href: 'https://tatsudev.itch.io/rail-survivors',
+			image: '/rail-survivors-cover.png',
+			alt: 'Rail Survivors game cover',
+			objectPosition: 'center top'
+		},
 		{
 			title: 'Less Space',
 			href: 'https://tatsudev.itch.io/less-space',
@@ -111,248 +114,142 @@
 	}
 </script>
 
-<div class="page-shell">
-	<div class="rainbow-border transition duration-200" class:rainbow-anim={showRainbow}></div>
-	<div class="page-layout flex min-h-screen w-full max-w-5xl flex-col px-4 sm:min-w-48">
-		<!-- Logo -->
-		<header class="flex w-full flex-none items-center justify-center py-2">
-			<div class="site-logo group relative">
-				<img
-					src="/TatsuDev.svg"
-					alt="TatsuDev Logo"
-					class="block h-auto w-full object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
-				/>
+<svelte:head>
+	<title>TatsuDev</title>
+</svelte:head>
+
+<SiteShell>
+	<section
+		class="current-game-section space-y-3 sm:space-y-4"
+		aria-labelledby="current-game-heading"
+	>
+		<h1 id="current-game-heading" class="section-heading">My current game in development</h1>
+		<div class="featured-game-frame">
+			<a
+				href="https://tatsudev.itch.io/diabolic"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="featured-game group"
+				aria-label="Play the Diabolic demo on itch.io"
+			>
+				<img src="/diabolic-banner.png" alt="Diabolic in a dark dungeon" />
+				<span class="featured-game-shade" aria-hidden="true"></span>
+				<span class="featured-game-status">In development</span>
+				<span class="featured-game-action">
+					Play demo <ChevronRight size={16} aria-hidden="true" />
+				</span>
+			</a>
+		</div>
+	</section>
+
+	<section class="other-games-section space-y-3 sm:space-y-4" aria-labelledby="other-games-heading">
+		<h2 id="other-games-heading" class="section-heading">My other games</h2>
+		<div class="game-gallery" role="region" aria-label="Other games gallery">
+			<div
+				class="game-gallery-track"
+				onpointerdown={startGallerySwipe}
+				onpointerup={endGallerySwipe}
+				onpointercancel={cancelGallerySwipe}
+			>
+				{#each visibleGames as game, slot (game.title)}
+					<article
+						class="game-gallery-slide"
+						class:is-active={slot === 1}
+						class:is-wrapping={game.title === wrappingGameTitle}
+						animate:flip={{ duration: galleryTransitionDuration, easing: cubicOut }}
+					>
+						<div class="gallery-artwork">
+							{#if slot === 1}
+								<a
+									href={game.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={`Play ${game.title}`}
+									class="gallery-game group"
+									onclick={preventClickAfterSwipe}
+								>
+									<img
+										src={game.image}
+										alt={game.alt}
+										style:object-position={game.objectPosition ?? 'center'}
+									/>
+								</a>
+							{:else}
+								<button
+									type="button"
+									aria-label={`Show ${game.title} in the center`}
+									class="gallery-game group"
+									onclick={(event) => selectSideGame(event, slot === 0 ? -1 : 1)}
+								>
+									<img
+										src={game.image}
+										alt={game.alt}
+										style:object-position={game.objectPosition ?? 'center'}
+									/>
+								</button>
+							{/if}
+						</div>
+						<p class="gallery-game-title">{game.title}</p>
+					</article>
+				{/each}
 			</div>
-		</header>
-		<main class="page-content flex-1 text-wrap text-center">
-			<section
-				class="current-game-section space-y-3 sm:space-y-4"
-				aria-labelledby="current-game-heading"
-			>
-				<h1 id="current-game-heading" class="section-heading">My current game in development</h1>
-				<div class="featured-game-frame">
-					<a
-						href="https://tatsudev.itch.io/diabolic"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="featured-game group"
-						aria-label="Play the Diabolic demo on itch.io"
-					>
-						<img src="/diabolic-banner.png" alt="Diabolic in a dark dungeon" />
-						<span class="featured-game-shade" aria-hidden="true"></span>
-						<span class="featured-game-status">In development</span>
-						<span class="featured-game-action">
-							Play demo <ChevronRight size={16} aria-hidden="true" />
-						</span>
-					</a>
-				</div>
-			</section>
+		</div>
+	</section>
 
-			<section
-				class="other-games-section space-y-3 sm:space-y-4"
-				aria-labelledby="other-games-heading"
-			>
-				<h2 id="other-games-heading" class="section-heading">My other games</h2>
-				<div class="game-gallery" role="region" aria-label="Other games gallery">
-					<div
-						class="game-gallery-track"
-						onpointerdown={startGallerySwipe}
-						onpointerup={endGallerySwipe}
-						onpointercancel={cancelGallerySwipe}
-					>
-						{#each visibleGames as game, slot (game.title)}
-							<article
-								class="game-gallery-slide"
-								class:is-active={slot === 1}
-								class:is-wrapping={game.title === wrappingGameTitle}
-								animate:flip={{ duration: galleryTransitionDuration, easing: cubicOut }}
-							>
-								<div class="gallery-artwork">
-									{#if slot === 1}
-										<a
-											href={game.href}
-											target="_blank"
-											rel="noopener noreferrer"
-											aria-label={`Play ${game.title}`}
-											class="gallery-game group"
-											onclick={preventClickAfterSwipe}
-										>
-											<img
-												src={game.image}
-												alt={game.alt}
-												style:object-position={game.objectPosition ?? 'center'}
-											/>
-										</a>
-									{:else}
-										<button
-											type="button"
-											aria-label={`Show ${game.title} in the center`}
-											class="gallery-game group"
-											onclick={(event) => selectSideGame(event, slot === 0 ? -1 : 1)}
-										>
-											<img
-												src={game.image}
-												alt={game.alt}
-												style:object-position={game.objectPosition ?? 'center'}
-											/>
-										</button>
-									{/if}
-								</div>
-								<p class="gallery-game-title">{game.title}</p>
-							</article>
-						{/each}
-					</div>
-				</div>
-			</section>
+	<a href="/strudel" class="strudel-link">Check Out My Strudel Collection</a>
 
-			<a href="/strudel" class="strudel-link">My Strudel Collection</a>
-
-			<div class="flex items-center justify-center py-2">
-				<a
-					href="https://x.com/TatsuDev_x3"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="Visit TatsuDev on X"
-					class="tweet-bird group"
-				>
-					<svg class="bird" viewBox="0 0 48 48" aria-hidden="true">
-						<defs>
-							<clipPath id="bird-body-clip">
-								<path
-									d="M8 13.5c5.3-1.8 10.1-1.2 14.1 1.2 2.4-3.3 6.6-5.5 11.1-5.5-.6 2.6-1.9 4.6-3.8 6 4.5.6 7.3 3.6 8.2 7.8l-6.1-1.3c.5 7-3.7 12.8-11.8 14.4-4.8.9-9-.4-12.3-3.3 4.3.3 7.3-.8 9.2-2.5-3.8-.3-6.4-2.6-7.3-5.6 1.2.3 2.3.3 3.4 0-3.6-1.5-5.2-4.7-4.7-8.1 1 .7 2.1 1.1 3.2 1.3-1.4-1.1-2.4-2.6-3.2-4.4Z"
-								/>
-							</clipPath>
-						</defs>
+	<div class="flex items-center justify-center py-2">
+		<a
+			href="https://x.com/TatsuDev_x3"
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Visit TatsuDev on X"
+			class="tweet-bird group"
+		>
+			<svg class="bird" viewBox="0 0 48 48" aria-hidden="true">
+				<defs>
+					<clipPath id="bird-body-clip">
 						<path
-							class="bird-outline"
 							d="M8 13.5c5.3-1.8 10.1-1.2 14.1 1.2 2.4-3.3 6.6-5.5 11.1-5.5-.6 2.6-1.9 4.6-3.8 6 4.5.6 7.3 3.6 8.2 7.8l-6.1-1.3c.5 7-3.7 12.8-11.8 14.4-4.8.9-9-.4-12.3-3.3 4.3.3 7.3-.8 9.2-2.5-3.8-.3-6.4-2.6-7.3-5.6 1.2.3 2.3.3 3.4 0-3.6-1.5-5.2-4.7-4.7-8.1 1 .7 2.1 1.1 3.2 1.3-1.4-1.1-2.4-2.6-3.2-4.4Z"
 						/>
-						<rect
-							class="bird-fill"
-							x="0"
-							y="0"
-							width="48"
-							height="48"
-							clip-path="url(#bird-body-clip)"
-						/>
-						<path class="beak" d="m31.5 18.2 8.8 2.4-8 2.1Z" />
-						<path class="beak-open" d="m31.5 17.8 8.8 2.8-8.6.6Zm-.1 5.1 8.1 2.6-8.1-1Z" />
-						<circle class="bird-eye" cx="30.2" cy="15.2" r="1.05" />
-						<g
-							class="sound-lines"
-							fill="none"
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-width="2"
-						>
-							<path class="sound-wave sound-wave-hidden" d="M40.5 16.5q3.5 3.5 0 7" />
-							<path class="sound-wave sound-wave-soft" d="M42 14q6 6 0 12" />
-							<path class="sound-wave sound-wave-medium" d="M43 11q9 9 0 18" />
-							<path class="sound-wave sound-wave-strong" d="M44 8q12 12 0 24" />
-						</g>
-					</svg>
-					<span class="speech-bubble" aria-hidden="true">
-						Follow me on X for more frequent updates on my games.
-					</span>
-				</a>
-			</div>
-		</main>
-		<footer
-			class="flex w-full flex-none flex-col items-center gap-3 text-wrap pb-5 text-center text-gray-200"
-		>
-			<button
-				aria-label={showRainbow ? 'Turn lights off' : 'Turn lights on'}
-				title={showRainbow ? 'Turn lights off' : 'Turn lights on'}
-				class="rounded-lg bg-gray-600 p-2 text-gray-200 transition-colors hover:bg-gray-600/50"
-				onclick={toggleRainbow}
-				onmouseenter={() => {
-					isBtnHovered = true;
-				}}
-				onmouseleave={() => {
-					isBtnHovered = false;
-				}}
-			>
-				{#if (showRainbow && !isBtnHovered) || (!showRainbow && isBtnHovered)}
-					<LightbulbOff />
-				{:else}
-					<Lightbulb />
-				{/if}
-			</button>
-			<p>Made with Freude! :3</p>
-		</footer>
+					</clipPath>
+				</defs>
+				<path
+					class="bird-outline"
+					d="M8 13.5c5.3-1.8 10.1-1.2 14.1 1.2 2.4-3.3 6.6-5.5 11.1-5.5-.6 2.6-1.9 4.6-3.8 6 4.5.6 7.3 3.6 8.2 7.8l-6.1-1.3c.5 7-3.7 12.8-11.8 14.4-4.8.9-9-.4-12.3-3.3 4.3.3 7.3-.8 9.2-2.5-3.8-.3-6.4-2.6-7.3-5.6 1.2.3 2.3.3 3.4 0-3.6-1.5-5.2-4.7-4.7-8.1 1 .7 2.1 1.1 3.2 1.3-1.4-1.1-2.4-2.6-3.2-4.4Z"
+				/>
+				<rect
+					class="bird-fill"
+					x="0"
+					y="0"
+					width="48"
+					height="48"
+					clip-path="url(#bird-body-clip)"
+				/>
+				<path class="beak" d="m31.5 18.2 8.8 2.4-8 2.1Z" />
+				<path class="beak-open" d="m31.5 17.8 8.8 2.8-8.6.6Zm-.1 5.1 8.1 2.6-8.1-1Z" />
+				<circle class="bird-eye" cx="30.2" cy="15.2" r="1.05" />
+				<g
+					class="sound-lines"
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-width="2"
+				>
+					<path class="sound-wave sound-wave-hidden" d="M40.5 16.5q3.5 3.5 0 7" />
+					<path class="sound-wave sound-wave-soft" d="M42 14q6 6 0 12" />
+					<path class="sound-wave sound-wave-medium" d="M43 11q9 9 0 18" />
+					<path class="sound-wave sound-wave-strong" d="M44 8q12 12 0 24" />
+				</g>
+			</svg>
+			<span class="speech-bubble" aria-hidden="true">
+				Follow me on X for more frequent updates on my games.
+			</span>
+		</a>
 	</div>
-</div>
+</SiteShell>
 
 <style>
-	.page-shell {
-		position: relative;
-		isolation: isolate;
-		display: flex;
-		min-height: 100vh;
-		width: 100%;
-		justify-content: center;
-	}
-
-	.page-layout {
-		position: relative;
-		z-index: 1;
-	}
-
-	.site-logo {
-		width: min(100%, 12rem);
-		padding: 0.5rem 0.75rem;
-	}
-
-	.rainbow-border {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		border-radius: 1.5rem; /* matches Tailwind's rounded-lg */
-		padding: 6px; /* border thickness */
-		background: conic-gradient(
-			from 0deg,
-			#ff6b6b,
-			/* Soft Red */ #ffb86b,
-			/* Soft Orange */ #fff56b,
-			/* Soft Yellow */ #6bffb8,
-			/* Soft Green */ #6bcaff,
-			/* Soft Cyan */ #6b6bff,
-			/* Soft Blue */ #b86bff,
-			/* Soft Purple */ #ff6bcf,
-			/* Soft Pink */ #ff6b6b /* Back to Soft Red */
-		);
-		/* Show only the border using masking */
-		-webkit-mask:
-			linear-gradient(#fff 0 0) content-box,
-			linear-gradient(#fff 0 0);
-		mask:
-			linear-gradient(#fff 0 0) content-box,
-			linear-gradient(#fff 0 0);
-		-webkit-mask-composite: xor;
-		mask-composite: exclude;
-		/* Animate the background's position for a moving effect */
-		background-size: 200% 200%;
-		background-position: 0% 50%;
-		transition: background-position 0.5s;
-		pointer-events: none;
-	}
-
-	.rainbow-anim {
-		animation: rainbow-rotate 2s ease infinite;
-	}
-
-	.game-banner {
-		animation: banner-pop 700ms ease-out both;
-	}
-
-	.page-content {
-		display: flex;
-		flex-direction: column;
-		gap: clamp(0.875rem, 2vh, 1.25rem);
-		width: 100%;
-		padding-block: 0.5rem 0.75rem;
-	}
-
 	.section-heading {
 		color: #fff;
 		font-size: clamp(1.35rem, 2.6vw, 1.9rem);
@@ -368,6 +265,8 @@
 	}
 
 	.featured-game {
+		transform: translate3d(0, 0, 0) scale(1);
+		will-change: transform;
 		position: relative;
 		display: block;
 		aspect-ratio: 16 / 9;
@@ -383,6 +282,8 @@
 	}
 
 	.featured-game > img {
+		transform: translate3d(0, 0, 0) scale(1);
+		will-change: transform;
 		position: absolute;
 		top: -16%;
 		left: 0;
@@ -427,7 +328,7 @@
 
 	.featured-game:hover,
 	.featured-game:focus-visible {
-		transform: translateY(-3px) scale(1.02);
+		transform: translate3d(0, -3px, 0) scale(1.02);
 		box-shadow:
 			0 0 0 2px rgb(250 215 143 / 0.82),
 			0 28px 72px rgb(0 0 0 / 0.56);
@@ -435,7 +336,7 @@
 
 	.featured-game:hover > img,
 	.featured-game:focus-visible > img {
-		transform: scale(1.04);
+		transform: translate3d(0, 0, 0) scale(1.04);
 	}
 
 	.featured-game:hover .featured-game-action,
@@ -480,6 +381,8 @@
 	}
 
 	.gallery-game {
+		transform: translate3d(0, 0, 0);
+		will-change: transform;
 		position: absolute;
 		inset: 0;
 		display: block;
@@ -502,25 +405,28 @@
 	}
 
 	.gallery-game > img {
+		transform: translate3d(0, 0, 0) scale(1);
+		filter: saturate(1);
+		will-change: transform, filter;
 		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		transition:
 			transform 360ms ease,
-			filter 220ms ease;
+			filter 360ms ease;
 	}
 
 	.gallery-game:hover,
 	.gallery-game:focus-visible {
 		z-index: 1;
-		transform: translateY(-3px);
+		transform: translate3d(0, -3px, 0);
 		box-shadow: 0 14px 34px rgb(0 0 0 / 0.5);
 	}
 
 	.gallery-game:hover > img,
 	.gallery-game:focus-visible > img {
-		transform: scale(1.045);
+		transform: translate3d(0, 0, 0) scale(1.045);
 		filter: saturate(1.12);
 	}
 
@@ -738,10 +644,6 @@
 	}
 
 	@media (max-width: 640px) {
-		.page-content {
-			padding-top: 0.25rem;
-		}
-
 		.featured-game-frame {
 			width: 100%;
 		}
@@ -815,32 +717,6 @@
 		.tweet-bird:hover .sound-wave-strong,
 		.tweet-bird:focus-visible .sound-wave-strong {
 			animation: none;
-		}
-	}
-
-	@keyframes rainbow-rotate {
-		0% {
-			background-position: 0% 50%;
-		}
-		25% {
-			background-position: 100% 100%;
-		}
-		50% {
-			background-position: 50% 0%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	@keyframes banner-pop {
-		from {
-			opacity: 0;
-			transform: translateY(10px) scale(0.98);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) scale(1);
 		}
 	}
 </style>
