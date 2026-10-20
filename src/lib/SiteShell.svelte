@@ -47,6 +47,7 @@
 				{/if}
 			</button>
 			<p>Made with Freude! :3</p>
+<nav aria-label="Rechtliche Seiten" class="flex flex-wrap justify-center gap-5 text-sm"><a class="underline underline-offset-4 hover:text-purple-300" href="/impressum">Impressum</a><a class="underline underline-offset-4 hover:text-purple-300" href="/datenschutz">Datenschutz</a></nav>
 		</footer>
 	</div>
 </div>
