@@ -130,13 +130,13 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="featured-game group"
-				aria-label="Play the Diabolic demo on itch.io"
+				aria-label="Download the Diabolic demo on itch.io"
 			>
 				<img src="/diabolic-banner.png" alt="Diabolic in a dark dungeon" />
 				<span class="featured-game-shade" aria-hidden="true"></span>
 				<span class="featured-game-status">In development</span>
 				<span class="featured-game-action">
-					Play demo <ChevronRight size={16} aria-hidden="true" />
+					Download demo <ChevronRight size={16} aria-hidden="true" />
 				</span>
 			</a>
 		</div>
